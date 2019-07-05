@@ -80,8 +80,8 @@ def onClickMulti():
 
 def onClickRoot():
     global index
-    w.insert(index, "./")
-    index += 2
+    w.insert(index, "./(")
+    index += 3
 
 def onClickSqr():
     global index
@@ -108,10 +108,12 @@ def onClickEnter():
     calculation = w.get()
     if "./" in calculation:
         calculation = calculation.replace("./", "sqrt")
-    elif "^" in calculation:
+    if "^" in calculation:
         calculation = calculation.replace("^", "**")
     answer = str(eval(calculation))
     onClickClear()
+    print(calculation)
+    print(answer)
     w.insert(0, answer)
     index = len(answer)
 
@@ -137,8 +139,8 @@ buttonSqr = Button(testing, text="^2", command=onClickSqr)
 buttonOpenBracket = Button(testing, text="(", command=onClickOpenBracket)
 buttonCloseBracket = Button(testing, text=")", command=onClickCloseBracket)
 
-buttonEnter = Button(testing, text="Enter", command=onClickEnter)
-buttonClear = Button(testing, text="Clear", command=onClickClear)
+buttonEnter = Button(testing, text="Pock", command=onClickEnter)
+buttonClear = Button(testing, text="Flex", command=onClickClear)
 
 w.grid(row=4, column=0, columnspan=5)
 
@@ -163,6 +165,6 @@ buttonOpenBracket.grid(row=2, column=3)
 buttonCloseBracket.grid(row=2, column=4)
 
 buttonEnter.grid(row=5, column=0, columnspan=3)
-buttonClear.grid(row=5, column=2, columnspan=2)
+buttonClear.grid(row=5, column=3, columnspan=2)
 
 testing.mainloop()
